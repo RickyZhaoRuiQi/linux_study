@@ -1,0 +1,4 @@
+IP (tos 0x0, ttl 64, id 5369, offset 0, flags [+], proto ICMP (1), length 1500)
+    192.168.1.101 > 192.168.1.100: ICMP echo request, id 4825, seq 1, length 1480
+IP (tos 0x0, ttl 64, id 5369, offset 1480, flags [none], proto ICMP (1), length 21)
+    192.168.1.101 > 192.168.1.100: ip-proto-1

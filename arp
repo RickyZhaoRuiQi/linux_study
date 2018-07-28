@@ -1,0 +1,2 @@
+08:00:27:d7:81:3d > Broadcast, ethertype ARP (0x0806), length 42: Request who-has 192.168.1.100 tell 192.168.1.101, length 28
+fc:01:7c:31:bd:e7 > 08:00:27:d7:81:3d, ethertype ARP (0x0806), length 60: Reply 192.168.1.100 is-at fc:01:7c:31:bd:e7, length 46
