@@ -23,8 +23,24 @@ void* another(void* arg)
 	pthread_mutex_unlock(&mutex);
 }
 
+void prepare()
+{
+	pthread_mutex_lock(&mutex);
+}
+
+void parent()
+{
+	pthread_mutex_unlock(&mutex);
+}
+
+void child()
+{
+	pthread_mutex_unlock(&mutex);
+}
+
 int main()
 {
+	pthread_atfork(prepare,parent,child);
 	pthread_mutex_init(&mutex,NULL);
 	pthread_t id;
 	pthread_create(&id,NULL,another,NULL);
@@ -52,3 +68,11 @@ int main()
 	pthread_mutex_destroy(&mutex);
 	return 0;
 }
+
+
+/*
+	解决方案 int pthread_atfork(void (*prepare)(void),void (*parent)(void),void (*child)(void));
+	prepare：句柄在fork调用创建出子进程之前被执行，它可以用来锁住所有父进程的互斥锁。
+	parent：句柄在fork调用之后，返回之前在父进程中执行，他的作用是释放所有的锁
+	child：句柄也是用于释放所有在prepare句柄中被锁住的互斥锁
+ */
